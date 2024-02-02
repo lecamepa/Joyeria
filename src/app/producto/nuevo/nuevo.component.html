@@ -1,0 +1,136 @@
+<div class="card">
+  <div class="card-header">Registro de Producto</div>
+  <div class="card-body">
+    <div class="col-md-6 offset-md-3">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nombre" class="col-form-label col-sm-2">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="newProducto.nombre"
+            name="nombre"
+            #nombre="ngModel"
+            minlength="3"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+          >
+            <div *ngIf="nombre.errors?.['required']">
+              El nombre es obligatorio
+            </div>
+            <div *ngIf="nombre.errors?.['minlength']">
+              El nombre debe tener mínimo 3 caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="material" class="col-form-label col-sm-2">Material</label>
+
+          <select
+            class="form-select"
+            name=""
+            id="material"
+            name="material"
+            placeholder="Seleccione el material"
+            [(ngModel)]="newProducto.material"
+            required
+            #material="ngModel"
+          >
+            <option value="">Seleccione el Material</option>
+            <option *ngFor="let mat of materiales" value="{{ mat.id }}">
+              {{ mat.nombre }}
+            </option>
+          </select>
+          <div
+            class="alert alert-danger"
+            *ngIf="material.invalid && (material.dirty || material.touched)"
+          >
+            <div *ngIf="material.errors?.['required']">
+              El material es obligatorio
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tipo" class="col-form-label col-sm-2">Tipo</label>
+
+          <select
+            class="form-select"
+            name="tipo"
+            placeholder="Seleccione el tipo "
+            [(ngModel)]="newProducto.tipo"
+            required
+            #tipo="ngModel"
+          >
+            <option value="">Seleccione el Tipo</option>
+            <option *ngFor="let tip of tipos" value="{{ tip.id }}">
+              {{ tip.nombre }}
+            </option>
+          </select>
+          <div
+            class="alert alert-danger"
+            *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)"
+          >
+            <div *ngIf="tipo.errors?.['required']">El tipo es obligatorio</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="precio" class="col-form-label col-sm-2">Precio</label>
+
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="newProducto.precio"
+            name="precio"
+            min="1000"
+            #precio="ngModel"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="precio.invalid && (precio.dirty || precio.touched)"
+          >
+            <div *ngIf="precio.errors?.['required']">
+              El precio es obligatorio
+            </div>
+            <div *ngIf="precio.errors?.['min']">
+              El precio debe ser mayor o igual a $1000
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="peso" class="col-form-label col-sm-2">Peso</label>
+
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="newProducto.peso"
+            name="peso"
+            min="1"
+            #peso="ngModel"
+            required
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="peso.invalid && (peso.dirty || peso.touched)"
+          >
+            <div *ngIf="peso.errors?.['required']">El peso es obligatorio</div>
+            <div *ngIf="peso.errors?.['min']">
+              El peso debe ser mayor a cero (0)
+            </div>
+          </div>
+        </div>
+        <div class="py-3">
+          <button class="btn btn-success">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

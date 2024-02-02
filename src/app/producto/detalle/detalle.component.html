@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header" style="background: #f5f7f6ba">Ver Producto</div>
+  <div class="card-body">
+    <table class="table" border="none">
+      <tbody>
+        <tr style="width: 20%">
+          <td><b>Id:</b></td>
+          <td>{{ producto.id }}</td>
+        </tr>
+        <tr>
+          <td><b>Nombre:</b></td>
+          <td>
+            <label>{{ producto.nombre }}</label>
+          </td>
+        </tr>
+        <tr>
+          <td><b>Material:</b></td>
+          <td>{{ producto.nombreMaterial }}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td><b>Tipo de Joya:</b></td>
+          <td>{{ producto.nombreTipo }}</td>
+        </tr>
+        <tr>
+          <td><b>Precio:</b></td>
+          <td>{{ producto.precio }}</td>
+        </tr>
+        <tr>
+          <td><b>Peso:</b></td>
+          <td>{{ producto.peso }}</td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn btn-secondary" (click)="Volver()">Cerrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

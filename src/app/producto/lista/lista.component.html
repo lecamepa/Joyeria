@@ -1,0 +1,53 @@
+<div class="d-grid gap-1 d-md-block py-3">
+  <button
+    class="btn btn-primary me-md-2"
+    routerLink="/producto/nuevo"
+    type="button"
+  >
+    Agregar
+  </button>
+</div>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Material</th>
+      <th>Tipo</th>
+      <th>Precio</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let prod of producto">
+    <tr>
+      <td>{{ prod.id }}</td>
+      <td>{{ prod.nombre }}</td>
+      <td>{{ prod.nombreMaterial }}</td>
+      <td>{{ prod.nombreTipo }}</td>
+      <td>{{ prod.precio }}</td>
+      <td>
+        <button
+          class="btn btn-info"
+          (click)="verDetalles(prod.id)"
+          style="margin-left: 0.5rem"
+        >
+          Ver
+        </button>
+        <button
+          (click)="actualizarProducto(prod.id)"
+          class="btn btn-warning"
+          style="margin-left: 0.5rem"
+        >
+          Actualizar
+        </button>
+        <button
+          (click)="eliminarProducto(prod.id)"
+          class="btn btn-danger"
+          style="margin-left: 0.5rem"
+        >
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
